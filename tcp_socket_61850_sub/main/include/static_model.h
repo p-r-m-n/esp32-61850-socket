@@ -1,0 +1,75 @@
+/*
+ * static_model.h
+ *
+ * automatically generated from arquivoSCL_criado.icd
+ */
+
+#ifndef STATIC_MODEL_H_
+#define STATIC_MODEL_H_
+
+#include <stdlib.h>
+#include "iec61850_model.h"
+
+extern IedModel iedModel;
+extern LogicalDevice iedModel_ANALOGRW;
+extern LogicalNode   iedModel_ANALOGRW_LLN0;
+extern DataObject    iedModel_ANALOGRW_LLN0_Mod;
+extern DataAttribute iedModel_ANALOGRW_LLN0_Mod_stVal;
+extern DataAttribute iedModel_ANALOGRW_LLN0_Mod_q;
+extern DataAttribute iedModel_ANALOGRW_LLN0_Mod_t;
+extern DataAttribute iedModel_ANALOGRW_LLN0_Mod_ctlModel;
+extern LogicalNode   iedModel_ANALOGRW_GGIO1;
+extern DataObject    iedModel_ANALOGRW_GGIO1_Mod;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_Mod_stVal;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_Mod_q;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_Mod_t;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_Mod_ctlModel;
+extern DataObject    iedModel_ANALOGRW_GGIO1_AnOut1;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_mxVal;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_mxVal_f;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_q;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_t;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_ctlVal;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_origin;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_origin_orCat;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_origin_orIdent;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_ctlNum;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_T;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_Test;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_Oper_Check;
+extern DataAttribute iedModel_ANALOGRW_GGIO1_AnOut1_ctlModel;
+
+
+
+#define IEDMODEL_ANALOGRW (&iedModel_ANALOGRW)
+#define IEDMODEL_ANALOGRW_LLN0 (&iedModel_ANALOGRW_LLN0)
+#define IEDMODEL_ANALOGRW_LLN0_Mod (&iedModel_ANALOGRW_LLN0_Mod)
+#define IEDMODEL_ANALOGRW_LLN0_Mod_stVal (&iedModel_ANALOGRW_LLN0_Mod_stVal)
+#define IEDMODEL_ANALOGRW_LLN0_Mod_q (&iedModel_ANALOGRW_LLN0_Mod_q)
+#define IEDMODEL_ANALOGRW_LLN0_Mod_t (&iedModel_ANALOGRW_LLN0_Mod_t)
+#define IEDMODEL_ANALOGRW_LLN0_Mod_ctlModel (&iedModel_ANALOGRW_LLN0_Mod_ctlModel)
+#define IEDMODEL_ANALOGRW_GGIO1 (&iedModel_ANALOGRW_GGIO1)
+#define IEDMODEL_ANALOGRW_GGIO1_Mod (&iedModel_ANALOGRW_GGIO1_Mod)
+#define IEDMODEL_ANALOGRW_GGIO1_Mod_stVal (&iedModel_ANALOGRW_GGIO1_Mod_stVal)
+#define IEDMODEL_ANALOGRW_GGIO1_Mod_q (&iedModel_ANALOGRW_GGIO1_Mod_q)
+#define IEDMODEL_ANALOGRW_GGIO1_Mod_t (&iedModel_ANALOGRW_GGIO1_Mod_t)
+#define IEDMODEL_ANALOGRW_GGIO1_Mod_ctlModel (&iedModel_ANALOGRW_GGIO1_Mod_ctlModel)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1 (&iedModel_ANALOGRW_GGIO1_AnOut1)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_mxVal (&iedModel_ANALOGRW_GGIO1_AnOut1_mxVal)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_mxVal_f (&iedModel_ANALOGRW_GGIO1_AnOut1_mxVal_f)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_q (&iedModel_ANALOGRW_GGIO1_AnOut1_q)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_t (&iedModel_ANALOGRW_GGIO1_AnOut1_t)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_ctlVal (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_ctlVal)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_origin (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_origin)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_origin_orCat (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_origin_orCat)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_origin_orIdent (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_origin_orIdent)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_ctlNum (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_ctlNum)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_T (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_T)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_Test (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_Test)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_Oper_Check (&iedModel_ANALOGRW_GGIO1_AnOut1_Oper_Check)
+#define IEDMODEL_ANALOGRW_GGIO1_AnOut1_ctlModel (&iedModel_ANALOGRW_GGIO1_AnOut1_ctlModel)
+
+#endif /* STATIC_MODEL_H_ */
+
