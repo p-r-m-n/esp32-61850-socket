@@ -20,6 +20,11 @@
  *
  *  See COPYING file for the complete license text.
  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <sys/poll.h>
@@ -35,6 +40,7 @@
 #include "esp_vfs.h"
 #include <sys/ioctl.h>
 #include <lwip/sockets.h>
+#include "esp_mac.h"
 
 #include <stdint.h>
 #include <string.h>
@@ -76,7 +82,9 @@ void
 EthernetHandleSet_addSocket(EthernetHandleSet self, const EthernetSocket sock)
 {
     if (self != NULL && sock != NULL) {
+
         int i = self->nhandles++;
+
         self->handles = realloc(self->handles, self->nhandles * sizeof(struct pollfd));
             
         self->handles[i].fd = sock->esp_socket;
@@ -88,7 +96,9 @@ void
 EthernetHandleSet_removeSocket(EthernetHandleSet self, const EthernetSocket sock)
 {
     if ((self != NULL) && (sock != NULL)) {
-        unsigned i;
+
+        int i;
+
         for (i = 0; i < self->nhandles; i++) {
             if (self->handles[i].fd == sock->esp_socket) {
                 memmove(&self->handles[i], &self->handles[i+1], sizeof(struct pollfd) * (self->nhandles - i - 1));
@@ -110,6 +120,7 @@ EthernetHandleSet_waitReady(EthernetHandleSet self, unsigned int timeoutMs)
     else {
        result = -1;
     }
+    
     return result;
 }
 
@@ -125,14 +136,7 @@ EthernetHandleSet_destroy(EthernetHandleSet self)
 void
 Ethernet_getInterfaceMACAddress(const char* interfaceId, uint8_t* addr)
 {       
-        
-    addr[0] = 0x90;
-    addr[1] = 0x38;
-    addr[2] = 0x0C;
-    addr[3] = 0xB1;
-    addr[4] = 0x70;
-    addr[5] = 0x83;
-
+    esp_read_mac(addr, ESP_MAC_ETH);
 }
 
 EthernetSocket
@@ -227,3 +231,6 @@ Ethernet_isSupported()
     return true;
 }
 
+#ifdef __cplusplus
+}
+#endif

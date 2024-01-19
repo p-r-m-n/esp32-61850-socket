@@ -20,6 +20,11 @@
  *
  *  See COPYING file for the complete license text.
  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <sys/poll.h>
@@ -35,6 +40,7 @@
 #include "esp_vfs.h"
 #include <sys/ioctl.h>
 #include <lwip/sockets.h>
+#include "esp_mac.h"
 
 #include <stdint.h>
 #include <string.h>
@@ -76,7 +82,9 @@ void
 EthernetHandleSet_addSocket(EthernetHandleSet self, const EthernetSocket sock)
 {
     if (self != NULL && sock != NULL) {
+
         int i = self->nhandles++;
+
         self->handles = realloc(self->handles, self->nhandles * sizeof(struct pollfd));
             
         self->handles[i].fd = sock->esp_socket;
@@ -88,7 +96,9 @@ void
 EthernetHandleSet_removeSocket(EthernetHandleSet self, const EthernetSocket sock)
 {
     if ((self != NULL) && (sock != NULL)) {
-        unsigned i;
+
+        int i;
+
         for (i = 0; i < self->nhandles; i++) {
             if (self->handles[i].fd == sock->esp_socket) {
                 memmove(&self->handles[i], &self->handles[i+1], sizeof(struct pollfd) * (self->nhandles - i - 1));
@@ -110,6 +120,7 @@ EthernetHandleSet_waitReady(EthernetHandleSet self, unsigned int timeoutMs)
     else {
        result = -1;
     }
+    
     return result;
 }
 
@@ -125,14 +136,7 @@ EthernetHandleSet_destroy(EthernetHandleSet self)
 void
 Ethernet_getInterfaceMACAddress(const char* interfaceId, uint8_t* addr)
 {       
-        
-    addr[0] = 0xC4;
-    addr[1] = 0xDE;
-    addr[2] = 0xE2;
-    addr[3] = 0xDA;
-    addr[4] = 0x09;
-    addr[5] = 0xE7;
-
+    esp_read_mac(addr, ESP_MAC_ETH);
 }
 
 EthernetSocket
@@ -175,6 +179,7 @@ void
 Ethernet_setProtocolFilter(EthernetSocket ethSocket, uint16_t etherType)
 {
     uint16_t eth_type_filter = 0x88B8;
+    printf("aplicou filtro goose\n");
     ioctl(ethSocket->esp_socket, L2TAP_S_RCV_FILTER, &eth_type_filter);
 }
 
@@ -201,8 +206,8 @@ Ethernet_sendPacket(EthernetSocket self, uint8_t* buffer, int packetSize)
     int eth_tap_fd = open("/dev/net/tap", 0);
     ioctl(eth_tap_fd, L2TAP_S_INTF_DEVICE, "ETH_DEF");
     /* Just send the packet as it is. */
-    write(self->esp_socket, buffer, packetSize);
-    printf("Enviou pacote\n");
+    int abc = write(self->esp_socket, buffer, packetSize);
+    printf("Enviou pacote de tamanho %d\n", abc);
     close(self->esp_socket);
     eth_tap_fd = open("/dev/net/tap", O_NONBLOCK);
     ioctl(eth_tap_fd, L2TAP_S_INTF_DEVICE, "ETH_DEF");
@@ -226,3 +231,6 @@ Ethernet_isSupported()
     return true;
 }
 
+#ifdef __cplusplus
+}
+#endif
