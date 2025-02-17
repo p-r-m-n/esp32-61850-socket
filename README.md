@@ -1,7 +1,35 @@
-# README esp32-61850-socket
+# README - esp32-61850-socket
 
-This repo contains two esp32 projects, each working as an intelligent electronic device (IED server with GOOSE publisher or subscriber) based on the TCP non-blocking socket template from esp-idf, either receiving data from a TCP socket and publishing it (tcp_socket_61850_pub) or subscribing to the data and sending it through a TCP socket (tcp_socket_61850_sub). They both use a modified version (already included in each project) of libiec61850 (https://github.com/mz-automation/libiec61850), which is necessary to create a hardware abstraction layer (HAL) for the esp32. All credits should be given to the respective authors.
+This repository contains two ESP32 projects, each functioning as an Intelligent Electronic Device (IED) with support for the GOOSE protocol from the IEC 61850 standard. Both are based on a non-blocking TCP socket model from ESP-IDF and can be opened, configured, compiled, and flashed onto a microcontroller using VSCode or VSCodium with the Espressif extension.
 
-Each folder is an ESP-IDF project (version 5.1.2), created with VSCODE and Espressif extension for VSCODE. As the GOOSE protocol of IEC 61850 has some time requirements regarding the packets, i created the HAL to send or receive these packets through ethernet only. So, each project should be flashed on a esp32 with ethernet (ESP32-Ethernet-Kit, WT32-ETH01, T-ETH-Lite, etc..). Since each board has its own ethernet pin config, you should edit the project "sdkconfig" (through menuconfig or editing directly inside the project folder) to match your ethernet pin configuration.
+## Project Overview
 
-![alt text](https://github.com/p-r-m-n/esp32-61850-socket/blob/main/images/application.jpg?raw=true)
+### 1. **tcp_socket_61850_pub**
+This project receives data from a TCP socket and publishes it via the GOOSE protocol.
+
+### 2. **tcp_socket_61850_sub**
+This project subscribes to data from the GOOSE protocol and forwards it via a TCP socket.
+
+Both projects use a modified version of the [libiec61850](https://github.com/mz-automation/libiec61850) library (already included in each project), which is necessary to create a hardware abstraction layer (HAL) for the ESP32. Full credit for the original library should be given to the respective authors.
+
+## Setup and Requirements
+
+- **Platform:** ESP-IDF (version 5.1.2)
+- **Recommended IDE:** VSCode or VSCodium with the Espressif extension
+- **Compatible Hardware:** ESP32 boards with Ethernet support (e.g., ESP32-Ethernet-Kit, WT32-ETH01, T-ETH-Lite)
+- **Ethernet Configuration:**
+  - Due to the time constraints of the GOOSE protocol, communication is exclusively performed via Ethernet.
+  - Each board has a specific Ethernet pin configuration.
+  - The `sdkconfig` file must be modified to match the appropriate Ethernet pin configuration.
+  - Configuration can be adjusted using `menuconfig` or by directly editing the file within the project folder.
+
+## Application Example
+
+The image below illustrates an example application of the system:
+
+![Application Example](https://github.com/p-r-m-n/esp32-61850-socket/blob/main/images/application.jpg?raw=true)
+
+---
+
+This repository aims to facilitate the implementation of solutions based on the IEC 61850 protocol using ESP32. For questions or suggestions, feel free to open an issue!
+
