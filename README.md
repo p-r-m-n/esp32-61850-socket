@@ -25,7 +25,7 @@ Both projects use a modified version of the [libiec61850](https://github.com/mz-
 
 ## Application Example
 
-The image below illustrates an example application of the system:
+The image below illustrates an example application of the system, where a publisher PLC will publish some information through a ESP32 GOOSE publisher and a ESP32 GOOSE subscriber will receive the data that will be passed to the subscribing PLC:
 
 ![Application Example](https://github.com/p-r-m-n/esp32-61850-socket/blob/main/images/application.png?raw=true)
 
